@@ -33,7 +33,7 @@ export default function IntroductionPage() {
       <img
         src={bgImg}
         alt="Invitation background"
-        className="absolute inset-0 w-full h-full object-cover object-center"
+        className="absolute inset-0 w-full h-full object-cover object-[50%_38%]"
       />
 
       {/* Slight overlay */}
