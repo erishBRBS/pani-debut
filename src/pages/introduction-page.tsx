@@ -49,11 +49,11 @@ export default function IntroductionPage() {
         `}
       >
         <div className="w-full h-full px-5 sm:px-10 md:px-12 py-5 sm:py-8 flex flex-col justify-center">
-          <h1 className="text-center font-tangerine font-bold text-[clamp(45px,7vw,56px)] tracking-[0.10em] text-[#9a6a57]">
+          <h1 className="text-center font-tangerine font-bold text-[clamp(30px,7vw,56px)] tracking-[0.10em] text-[#9a6a57]">
             You are invited!
           </h1>
 
-          <div className="mx-auto mt-2 h-[1px] w-32 sm:w-56 bg-[#9a6a57]/40" />
+          <div className="mx-auto mt-1 h-[1px] w-32 sm:w-56 bg-[#9a6a57]/40" />
 
           <p className="mt-3 text-center text-[#6f5247] leading-[1.55] text-[clamp(12px,3.3vw,18px)]">
             Come join me in celebrating as I reach a decade and eight! I would
