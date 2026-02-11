@@ -80,7 +80,7 @@ export default function IntroductionPage() {
           </h1>
 
           {/* partition closer + visible */}
-          <div className={`mx-auto border-t border-[#9a6a57]/70 ${inApp ? "mt-0.5 w-28 sm:w-48" : "mt-1 w-32 sm:w-56"}`} />
+          <div className={`mx-auto border-t border-[#9a6a57]/70 ${inApp ? "mt-0.5 w-32 sm:w-48" : "mt-1 w-32 sm:w-56"}`} />
 
           {/* ✅ reduce paragraph size + spacing only on in-app */}
           <p
