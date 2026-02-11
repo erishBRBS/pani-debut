@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import bgImg from "../assets/paint.jpg";
+// import bgImg from "../assets/paint.jpg";
 import TextCursor from "../components/TextCursor";
 
 // ✅ change these to your actual images
@@ -35,11 +35,11 @@ export default function FinersPage() {
       className="min-h-screen w-full relative overflow-hidden flex items-start justify-center pt-28 pb-20"
     >
       {/* Background image */}
-      <img
+      {/* <img
         src={bgImg}
         alt="Finers background"
         className="absolute inset-0 w-full h-full object-cover"
-      />
+      /> */}
 
       {/* Slight overlay */}
       <div className="absolute inset-0 bg-black/5" />
