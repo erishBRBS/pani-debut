@@ -109,8 +109,8 @@ export default function StickyNav() {
       <div className="mx-auto max-w-6xl px-4">
         <nav className="pointer-events-auto rounded-2xl border border-white/20 bg-white/55 backdrop-blur-md shadow-sm px-3 py-2">
           <div className="flex items-center justify-between gap-3">
-            <div className="font-semibold font-tangerine text-2xl sm:text-3xl tracking-wide text-[#6f5247]">
-              ✦ Stephanie Auldry @18
+            <div className="font-semibold font-tangerine text-lg sm:text-3xl tracking-wide text-[#6f5247]">
+              ✦ Stephanie Auldry   @18
             </div>
 
             <div className="flex items-center gap-2">
