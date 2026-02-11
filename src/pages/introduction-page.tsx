@@ -72,7 +72,7 @@ export default function IntroductionPage() {
 
           <div className="mt-3 flex flex-col sm:flex-row gap-3 justify-center">
             <a
-              href="#home"
+              href="#finers"
               className="inline-flex w-full sm:w-auto items-center justify-center rounded-xl bg-[#9a6a57] px-5 py-2.5 text-white text-sm sm:text-base hover:opacity-95 active:opacity-90 transition"
             >
               Details
