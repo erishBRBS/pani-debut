@@ -27,7 +27,7 @@ export default function IntroductionPage() {
     <section
       id="home"
       ref={pageRef}
-      className="min-h-[100svh] w-full relative overflow-hidden flex items-center justify-center"
+      className="w-full relative overflow-hidden flex items-center justify-center min-h-screen min-h-[100svh]"
     >
       {/* Background image */}
       <img
