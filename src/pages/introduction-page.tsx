@@ -27,13 +27,13 @@ export default function IntroductionPage() {
     <section
       id="home"
       ref={pageRef}
-      className="w-full relative overflow-hidden flex items-center justify-center min-h-screen min-h-[100svh]"
+      className="w-full relative overflow-hidden flex items-center justify-center min-h-screen min-h-[100dvh]"
     >
       {/* Background image */}
       <img
         src={bgImg}
         alt="Invitation background"
-        className="absolute inset-0 w-full h-full object-cover object-[50%_32%]"
+        className="absolute inset-0 w-full h-full object-cover object-center"
       />
 
       {/* Slight overlay */}
