@@ -32,7 +32,7 @@ export default function FinersPage() {
     <section
       id="finers"
       ref={pageRef}
-      className="min-h-screen w-full relative overflow-hidden flex items-start justify-center pt-28 pb-20"
+      className="min-h-screen w-full relative overflow-hidden flex items-start justify-center pt-28 pb-20 "
     >
       {/* Background image */}
       {/* <img
@@ -57,7 +57,7 @@ export default function FinersPage() {
       >
         {/* Header */}
         <h1 className="text-center font-tangerine text-5xl sm:text-6xl font-bold tracking-[0.15em] text-[#6f5247]">
-          Finers
+          The Finers
         </h1>
 
         {/* Partition line */}

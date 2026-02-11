@@ -107,7 +107,7 @@ export default function EventPage() {
       >
         {/* Header */}
         <h1 className="text-center font-tangerine text-5xl sm:text-6xl font-bold tracking-[0.15em] text-[#6f5247]">
-          18s
+          Signature 18s
         </h1>
 
         {/* Partition line */}
