@@ -1,20 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 
-type SectionId =
-  | "home"
-  | "finers"
-  | "roses"
-  | "candles"
-  | "treasure"
-  | "bills"
-  | "shots";
+type SectionId = "home" | "finers" | "events";
 
-const MAIN: { id: "home" | "finers"; label: string }[] = [
+type EventItemId = "roses" | "candles" | "treasure" | "bills" | "shots";
+
+const MAIN: { id: SectionId; label: string }[] = [
   { id: "home", label: "Home" },
   { id: "finers", label: "Finers" },
 ];
 
-const EIGHTEEN: { id: Exclude<SectionId, "home" | "finers">; label: string }[] = [
+const EIGHTEEN: { id: EventItemId; label: string }[] = [
   { id: "roses", label: "Roses" },
   { id: "candles", label: "Candles" },
   { id: "treasure", label: "Treasure" },
@@ -22,21 +17,25 @@ const EIGHTEEN: { id: Exclude<SectionId, "home" | "finers">; label: string }[] =
   { id: "shots", label: "Shots" },
 ];
 
-const ALL_IDS: SectionId[] = ["home", "finers", "roses", "candles", "treasure", "bills", "shots"];
+const ALL_IDS: SectionId[] = ["home", "finers", "events"];
 
 export default function StickyNav() {
   const [active, setActive] = useState<SectionId>("home");
   const [open18, setOpen18] = useState(false);
 
+  // ✅ pending actions (effects will perform window updates / scrolling)
+  const [pendingAnchor, setPendingAnchor] = useState<SectionId | null>(null);
+  const [pendingEventItem, setPendingEventItem] = useState<EventItemId | null>(null);
+
   const menuRef = useRef<HTMLDivElement | null>(null);
   const btn18Ref = useRef<HTMLButtonElement | null>(null);
 
-  // ✅ detect active section based on scroll position (top marker)
+  // ✅ detect active section based on scroll position
   useEffect(() => {
     let ticking = false;
 
     const getActiveSection = () => {
-      const offset = 110; // adjust if you move nav (top-4 etc)
+      const offset = 110;
       const y = offset;
 
       for (const id of ALL_IDS) {
@@ -44,11 +43,10 @@ export default function StickyNav() {
         if (!el) continue;
 
         const rect = el.getBoundingClientRect();
-        // "active" kapag yung section covers the marker line near top
         if (rect.top <= y && rect.bottom > y) return id;
       }
 
-      return "home" as SectionId;
+      return "home";
     };
 
     const onScroll = () => {
@@ -62,7 +60,7 @@ export default function StickyNav() {
 
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
-    onScroll(); // init
+    onScroll();
 
     return () => {
       window.removeEventListener("scroll", onScroll);
@@ -70,14 +68,49 @@ export default function StickyNav() {
     };
   }, []);
 
+  // ✅ run MAIN navigation (hash + scroll) in effect
+  useEffect(() => {
+    if (!pendingAnchor) return;
+
+    // update hash
+    window.location.hash = pendingAnchor;
+
+    // scroll
+    document.getElementById(pendingAnchor)?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setPendingAnchor(null);
+  }, [pendingAnchor]);
+
+  // ✅ run dropdown navigation (hash + scroll) in effect
+  useEffect(() => {
+    if (!pendingEventItem) return;
+
+    // update hash
+    window.location.hash = `events?item=${pendingEventItem}`;
+
+    // scroll to events section
+    document.getElementById("events")?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setPendingEventItem(null);
+  }, [pendingEventItem]);
+
   const scrollTo = (id: SectionId) => {
-    setActive(id); // ✅ instant highlight
+    setActive(id); // instant highlight
     setOpen18(false);
+    setPendingAnchor(id);
+  };
 
-    // ✅ update URL hash
-    window.history.replaceState(null, "", `#${id}`);
-
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  const goToEventItem = (id: EventItemId) => {
+    setOpen18(false);
+    setPendingEventItem(id);
   };
 
   // ✅ close dropdown when clicking outside
@@ -102,7 +135,7 @@ export default function StickyNav() {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  const is18Active = ["roses", "candles", "treasure", "bills", "shots"].includes(active);
+  const is18Active = active === "events";
 
   return (
     <header className="fixed top-4 left-0 right-0 z-50 pointer-events-none">
@@ -110,7 +143,7 @@ export default function StickyNav() {
         <nav className="pointer-events-auto rounded-2xl border border-white/20 bg-white/55 backdrop-blur-md shadow-sm px-3 py-2">
           <div className="flex items-center justify-between gap-3">
             <div className="font-semibold font-tangerine text-lg sm:text-3xl tracking-wide text-[#6f5247]">
-              ✦ Stephanie Auldry   @18
+              ✦ Stephanie Auldry @18
             </div>
 
             <div className="flex items-center gap-2">
@@ -121,7 +154,11 @@ export default function StickyNav() {
                     key={link.id}
                     onClick={() => scrollTo(link.id)}
                     className={`rounded-xl px-3 py-2 text-sm transition cursor-pointer
-                      ${isActive ? "bg-[#9a6a57] text-white" : "bg-white/40 text-[#6f5247] hover:bg-white/70"}
+                      ${
+                        isActive
+                          ? "bg-[#9a6a57] text-white"
+                          : "bg-white/40 text-[#6f5247] hover:bg-white/70"
+                      }
                     `}
                   >
                     {link.label}
@@ -135,7 +172,11 @@ export default function StickyNav() {
                   ref={btn18Ref}
                   onClick={() => setOpen18((v) => !v)}
                   className={`rounded-xl px-3 py-2 text-sm transition inline-flex items-center gap-2 cursor-pointer
-                    ${is18Active ? "bg-[#9a6a57] text-white" : "bg-white/40 text-[#6f5247] hover:bg-white/70"}
+                    ${
+                      is18Active
+                        ? "bg-[#9a6a57] text-white"
+                        : "bg-white/40 text-[#6f5247] hover:bg-white/70"
+                    }
                   `}
                   aria-haspopup="menu"
                   aria-expanded={open18}
@@ -149,21 +190,16 @@ export default function StickyNav() {
                     className="absolute right-0 mt-2 w-44 overflow-hidden rounded-xl border border-white/20 bg-white/80 backdrop-blur-md shadow-lg"
                     role="menu"
                   >
-                    {EIGHTEEN.map((item) => {
-                      const itemActive = active === item.id;
-                      return (
-                        <button
-                          key={item.id}
-                          onClick={() => scrollTo(item.id)}
-                          className={`w-full text-left px-4 py-2 text-sm transition
-                            ${itemActive ? "bg-[#9a6a57]/15 text-[#6f5247]" : "text-[#6f5247] hover:bg-white/70"}
-                          `}
-                          role="menuitem"
-                        >
-                          {item.label}
-                        </button>
-                      );
-                    })}
+                    {EIGHTEEN.map((item) => (
+                      <button
+                        key={item.id}
+                        onClick={() => goToEventItem(item.id)}
+                        className="w-full text-left px-4 py-2 text-sm transition text-[#6f5247] hover:bg-white/70"
+                        role="menuitem"
+                      >
+                        {item.label}
+                      </button>
+                    ))}
                   </div>
                 )}
               </div>

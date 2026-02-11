@@ -10,13 +10,52 @@ import shots from "../assets/shots.png";
 
 const images = [roses, candles, treasures, bills, shots];
 
+const keyToIndex: Record<string, number> = {
+  roses: 0,
+  candles: 1,
+  treasure: 2,
+  bills: 3,
+  shots: 4,
+};
+
+const indexToKey: Record<number, string> = {
+  0: "roses",
+  1: "candles",
+  2: "treasure",
+  3: "bills",
+  4: "shots",
+};
+
 export default function EventPage() {
   const [show, setShow] = useState(false);
   const pageRef = useRef<HTMLDivElement | null>(null);
 
-  // carousel state
   const [index, setIndex] = useState(0);
 
+  // ✅ robust hash parsing
+  useEffect(() => {
+    const applyFromHash = () => {
+      // ex: "#events?item=treasure"
+      const raw = window.location.hash || "";
+      const clean = raw.startsWith("#") ? raw.slice(1) : raw; // "events?item=treasure"
+
+      const [anchor, query] = clean.split("?");
+      if (anchor !== "events") return;
+
+      const params = new URLSearchParams(query || "");
+      const item = params.get("item");
+      if (!item) return;
+
+      const i = keyToIndex[item];
+      if (typeof i === "number") setIndex(i);
+    };
+
+    applyFromHash(); // on mount
+    window.addEventListener("hashchange", applyFromHash);
+    return () => window.removeEventListener("hashchange", applyFromHash);
+  }, []);
+
+  // ✅ fade-in animation
   useEffect(() => {
     const el = pageRef.current;
     if (!el) return;
@@ -35,17 +74,14 @@ export default function EventPage() {
     return () => observer.disconnect();
   }, []);
 
-  // optional autoplay
-  // useEffect(() => {
-  //   const t = setInterval(() => {
-  //     setIndex((i) => (i + 1) % images.length);
-  //   }, 3500);
+  const setIndexAndHash = (i: number) => {
+    setIndex(i);
+    const key = indexToKey[i] ?? "roses";
+    window.location.hash = `events?item=${key}`; // ✅ triggers hashchange
+  };
 
-  //   return () => clearInterval(t);
-  // }, []);
-
-  const prev = () => setIndex((i) => (i - 1 + images.length) % images.length);
-  const next = () => setIndex((i) => (i + 1) % images.length);
+  const prev = () => setIndexAndHash((index - 1 + images.length) % images.length);
+  const next = () => setIndexAndHash((index + 1) % images.length);
 
   return (
     <section
@@ -79,7 +115,6 @@ export default function EventPage() {
 
         {/* ✅ CENTERED single card */}
         <div className="mt-5 flex justify-center">
-          {/* LEFT: Carousel */}
           <div className="w-full max-w-3xl rounded-3xl bg-white/20 backdrop-blur-sm ring-1 ring-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.06)] overflow-hidden">
             <div className="relative w-full h-[520px] sm:h-[620px] lg:h-[720px]">
               <img
@@ -113,11 +148,9 @@ export default function EventPage() {
                   <button
                     key={i}
                     type="button"
-                    onClick={() => setIndex(i)}
+                    onClick={() => setIndexAndHash(i)}
                     className={`h-2.5 w-2.5 rounded-full transition ${
-                      i === index
-                        ? "bg-[#9a6a57]"
-                        : "bg-white/55 hover:bg-white/80"
+                      i === index ? "bg-[#9a6a57]" : "bg-white/55 hover:bg-white/80"
                     }`}
                     aria-label={`Go to slide ${i + 1}`}
                   />
