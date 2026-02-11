@@ -71,7 +71,7 @@ export default function IntroductionPage() {
             className={`text-center font-tangerine font-bold leading-none tracking-[0.10em] text-[#9a6a57]
               ${
                 inApp
-                  ? "text-[clamp(34px,6.2vw,50px)]"
+                  ? "text-[clamp(45px,6.2vw,50px)]"
                   : "text-[clamp(45px,7vw,56px)]"
               }
             `}
