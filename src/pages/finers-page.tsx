@@ -61,7 +61,7 @@ export default function FinersPage() {
         </h1>
 
         {/* Partition line */}
-        <div className="mx-auto mt-2 h-[1px] w-44 sm:w-72 bg-[#9a6a57]/40" />
+        <div className="mx-auto h-[1px] w-44 sm:w-72 bg-[#9a6a57]/40" />
 
         {/* ✅ 2 Image Cards */}
         <div className="mt-5 grid grid-cols-1 lg:grid-cols-2 gap-8">
