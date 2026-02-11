@@ -1,0 +1,33 @@
+.text-cursor-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  touch-action: none; /* ✅ important for mobile/touch */
+}
+
+.text-cursor-full {
+  width: 100%;
+  height: 100%;
+}
+
+.text-cursor-inline {
+  width: fit-content;
+  height: fit-content;
+  display: inline-block;
+}
+
+.text-cursor-inner {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.text-cursor-item {
+  position: absolute;
+  user-select: none;
+  white-space: nowrap;
+  font-size: 1.875rem;
+
+  /* ✅ center the emoji on the pointer */
+  transform: translate(-50%, -50%);
+}
