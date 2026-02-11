@@ -93,7 +93,7 @@ export default function EventPage() {
               <button
                 type="button"
                 onClick={prev}
-                className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-white/55 hover:bg-white/75 px-3 py-2 text-[#6f5247] transition"
+                className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-white/55 hover:bg-[#9a6a57] hover:text-white px-3 py-2 text-[#6f5247] transition"
                 aria-label="Previous"
               >
                 ‹
@@ -101,7 +101,7 @@ export default function EventPage() {
               <button
                 type="button"
                 onClick={next}
-                className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-white/55 hover:bg-white/75 px-3 py-2 text-[#6f5247] transition"
+                className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-white/55 hover:bg-[#9a6a57] hover:text-white px-3 py-2 text-[#6f5247] transition"
                 aria-label="Next"
               >
                 ›
