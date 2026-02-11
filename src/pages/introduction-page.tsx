@@ -49,7 +49,7 @@ export default function IntroductionPage() {
         `}
       >
         <div className="w-full h-full px-5 sm:px-10 md:px-12 py-5 sm:py-8 flex flex-col justify-center">
-          <h1 className="text-center font-tangerine font-bold leading-none text-[clamp(30px,7vw,56px)] tracking-[0.10em] text-[#9a6a57]">
+          <h1 className="text-center font-tangerine font-bold leading-none text-[clamp(45px,7vw,56px)] tracking-[0.10em] text-[#9a6a57]">
             You are invited!
           </h1>
 
