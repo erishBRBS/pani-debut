@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 // import bgImg from "../assets/card.jpg";
-import debutImg from "../assets/person/pic1.jpg";
+import debutImg from "../assets/person/pic2.jpg";
 
 function isInAppBrowser() {
   const ua = navigator.userAgent || "";
@@ -73,7 +73,7 @@ export default function IntroductionPage() {
               <img
                 src={debutImg}
                 alt="Debut portrait"
-                className="absolute inset-0 w-full h-full object-cover object-[50%_40%]"
+                className="absolute inset-0 w-full h-full object-cover object-[25%_40%]"
                 draggable={false}
               />
             </div>
