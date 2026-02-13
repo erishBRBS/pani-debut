@@ -1,10 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-// import bgImg from "../assets/paint.jpg";
+// import bgImg from "../assets/bgs/card.jpg";
 import TextCursor from "../components/TextCursor";
 
-// ✅ change these to your actual images
-import finerImg1 from "../assets/front.png";
-import finerImg2 from "../assets/back.png";
+import finerImg1 from "../assets/invitation/front.png";
+import finerImg2 from "../assets/invitation/back.png";
 
 export default function FinersPage() {
   const [show, setShow] = useState(false);
@@ -32,7 +31,7 @@ export default function FinersPage() {
     <section
       id="finers"
       ref={pageRef}
-      className="min-h-screen w-full relative overflow-hidden flex items-start justify-center pt-28 pb-20 "
+      className="min-h-screen w-full relative overflow-hidden flex items-start justify-center pt-28 pb-20"
     >
       {/* Background image */}
       {/* <img
@@ -63,10 +62,10 @@ export default function FinersPage() {
         {/* Partition line */}
         <div className="mx-auto h-[1px] w-44 sm:w-72 bg-[#9a6a57]/40" />
 
-        {/* ✅ 2 Image Cards */}
-        <div className="mt-5 grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Card 1 */}
-          <div className="rounded-3xl bg-white/20 backdrop-blur-sm ring-1 ring-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.06)] overflow-hidden">
+        {/* ✅ ONE BIG CONTAINER (both images inside) */}
+        <div className="mt-5 bg-white shadow-[0_18px_60px_rgba(0,0,0,0.10)] overflow-hidden">
+          <div className="grid grid-cols-1 lg:grid-cols-2">
+            {/* LEFT */}
             <div className="w-full h-[520px] sm:h-[620px] lg:h-[720px] flex items-center justify-center">
               <img
                 src={finerImg1}
@@ -74,10 +73,8 @@ export default function FinersPage() {
                 className="w-full h-full object-contain px-6 py-4"
               />
             </div>
-          </div>
 
-          {/* Card 2 */}
-          <div className="rounded-3xl bg-white/20 backdrop-blur-sm ring-1 ring-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.06)] overflow-hidden">
+            {/* RIGHT */}
             <div className="w-full h-[520px] sm:h-[620px] lg:h-[720px] flex items-center justify-center">
               <img
                 src={finerImg2}

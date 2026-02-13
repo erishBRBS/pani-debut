@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
-import bgImg from "../assets/paint-inverted.jpg";
+// import bgImg from "../assets/bgs/paint.jpg";
 
 // ✅ your images
-import roses from "../assets/roses.png";
-import candles from "../assets/candles.png";
-import treasures from "../assets/treasures.png";
-import bills from "../assets/bills.png";
-import shots from "../assets/shots.png";
+import roses from "../assets/events/roses.png";
+import candles from "../assets/events/candles.png";
+import treasures from "../assets/events/treasures.png";
+import bills from "../assets/events/bills.png";
+import shots from "../assets/events/shots.png";
 
 const images = [roses, candles, treasures, bills, shots];
 
@@ -90,11 +90,11 @@ export default function EventPage() {
       className="min-h-screen w-full relative overflow-hidden flex items-start justify-center pt-28 pb-20"
     >
       {/* Background image */}
-      <img
+      {/* <img
         src={bgImg}
         alt="18 events background"
         className="absolute inset-0 w-full h-full object-cover"
-      />
+      /> */}
 
       {/* Slight overlay */}
       <div className="absolute inset-0 bg-black/5" />
@@ -115,7 +115,7 @@ export default function EventPage() {
 
         {/* ✅ CENTERED single card */}
         <div className="mt-5 flex justify-center">
-          <div className="w-full max-w-3xl rounded-3xl bg-white/20 backdrop-blur-sm ring-1 ring-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.06)] overflow-hidden">
+          <div className="w-full max-w-3xl rounded-sm bg-white shadow-[0_10px_40px_rgba(0,0,0,0.06)] overflow-hidden">
             <div className="relative w-full h-[520px] sm:h-[620px] lg:h-[720px]">
               <img
                 src={images[index]}

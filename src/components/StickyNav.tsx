@@ -140,13 +140,13 @@ export default function StickyNav() {
   return (
     <header className="fixed top-4 left-0 right-0 z-50 pointer-events-none">
       <div className="mx-auto max-w-6xl px-4">
-        <nav className="pointer-events-auto rounded-2xl border border-white/20 bg-white/55 backdrop-blur-md shadow-sm px-3 py-2">
+        <nav className="pointer-events-auto rounded-2xl border border-white/10 bg-white/55 backdrop-blur-md shadow-sm px-3 py-2">
           <div className="flex items-center justify-between gap-3">
             <div className="font-semibold font-tangerine text-lg sm:text-3xl tracking-wide text-[#6f5247]">
               ✦ Stephanie Auldry @18
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 font-serif italic">
               {MAIN.map((link) => {
                 const isActive = active === link.id;
                 return (

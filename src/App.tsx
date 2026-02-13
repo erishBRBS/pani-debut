@@ -5,7 +5,7 @@ import EventPage from "./pages/event-page";
 
 export default function App() {
   return (
-    <div className="w-full">
+    <div className="w-full bg-white">
       <StickyNav />
       <IntroductionPage />
 
