@@ -142,7 +142,7 @@ export default function StickyNav() {
       <div className="mx-auto max-w-6xl px-4">
         <nav className="pointer-events-auto rounded-2xl border border-white/10 bg-white/55 backdrop-blur-md shadow-sm px-3 py-2">
           <div className="flex items-center justify-between gap-3">
-            <div className="font-semibold font-tangerine text-lg sm:text-3xl tracking-wide text-[#6f5247]">
+            <div className="font-semibold font-tangerine text-lg sm:text-3xl tracking-wide text-[#9a6a57]">
               ✦ Stephanie Auldry @18
             </div>
 
@@ -157,7 +157,7 @@ export default function StickyNav() {
                       ${
                         isActive
                           ? "bg-[#9a6a57] text-white"
-                          : "bg-white/40 text-[#6f5247] hover:bg-white/70"
+                          : "bg-white/40 text-[#9a6a57] hover:bg-white/70"
                       }
                     `}
                   >
@@ -175,7 +175,7 @@ export default function StickyNav() {
                     ${
                       is18Active
                         ? "bg-[#9a6a57] text-white"
-                        : "bg-white/40 text-[#6f5247] hover:bg-white/70"
+                        : "bg-white/40 text-[#9a6a57] hover:bg-white/70"
                     }
                   `}
                   aria-haspopup="menu"
@@ -194,7 +194,7 @@ export default function StickyNav() {
                       <button
                         key={item.id}
                         onClick={() => goToEventItem(item.id)}
-                        className="w-full text-left px-4 py-2 text-sm transition text-[#6f5247] hover:bg-white/70"
+                        className="w-full text-left px-4 py-2 text-sm transition text-[#9a6a57] hover:bg-white/70"
                         role="menuitem"
                       >
                         {item.label}

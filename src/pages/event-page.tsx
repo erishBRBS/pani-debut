@@ -106,7 +106,7 @@ export default function EventPage() {
         }`}
       >
         {/* Header */}
-        <h1 className="text-center font-tangerine text-5xl sm:text-6xl font-bold tracking-[0.15em] text-[#6f5247]">
+        <h1 className="text-center font-tangerine text-5xl sm:text-6xl font-bold tracking-[0.15em] text-[#9a6a57]">
           Signature 18s
         </h1>
 
