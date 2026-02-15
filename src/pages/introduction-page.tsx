@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 // import bgImg from "../assets/card.jpg";
-import debutImg from "../assets/person/pic2.jpg";
+import debutImg from "../assets/person/pic2.png";
 
 function isInAppBrowser() {
   const ua = navigator.userAgent || "";
